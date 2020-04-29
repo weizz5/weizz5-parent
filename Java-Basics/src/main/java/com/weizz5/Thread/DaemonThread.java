@@ -10,12 +10,14 @@ public class DaemonThread {
 
     public static void main(String[] args) {
 
-        //设置守护线程
         Thread thread = new Thread();
+        //设置守护线程
         thread.setDaemon(true);
         thread.start();
+        // 验证当前线程是否为守护线程，返回 true 则为守护线程
         System.out.println(thread.isDaemon());
 //        thread.isDaemon();
+
 
     }
 }
