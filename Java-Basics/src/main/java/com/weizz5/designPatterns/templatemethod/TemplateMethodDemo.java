@@ -16,6 +16,6 @@ public class TemplateMethodDemo {
 
         AbstractTemplate template2  = new TemplateImpl2();
 
-        template1.operation();
+        template2.operation();
     }
 }
