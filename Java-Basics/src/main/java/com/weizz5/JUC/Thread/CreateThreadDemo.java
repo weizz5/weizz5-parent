@@ -14,7 +14,14 @@ public class CreateThreadDemo {
 
         @Override
         public void run() {
+
+            try {
+                sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             System.out.println("Extends Thread !");
+
         }
     }
 
@@ -22,7 +29,11 @@ public class CreateThreadDemo {
 
         @Override
         public void run() {
+            long time = System.currentTimeMillis();
+            Thread.yield();
+            System.out.println("times:"+(System.currentTimeMillis()-time)+" ms");
             System.out.println("Implements Runnable!");
+
         }
     }
 
@@ -33,7 +44,6 @@ public class CreateThreadDemo {
         new Thread(new ImplementsRunnable()).start();
 
         new Thread(() -> System.out.println("lamda test!")).start();
-
 
         Executors.newCachedThreadPool().submit(() -> System.out.println("executor thread test !"));
 
