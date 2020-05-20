@@ -1,4 +1,4 @@
-package com.weizz5.code.leetCode;
+package com.weizz5.leetCode01;
 
 import com.alibaba.fastjson.JSON;
 
