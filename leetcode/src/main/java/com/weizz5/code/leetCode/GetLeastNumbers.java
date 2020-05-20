@@ -31,32 +31,32 @@ public class GetLeastNumbers {
     public static void main(String[] args) {
 
 //        int[] arr = new int[]{3,1, 2, 1,5,};
-        int[] arr = new int[]{10002,10003, 10006, 10009,10007,};
+        int[] arr = new int[]{10002, 10003, 10006, 10009, 10007,};
 
         long time = System.currentTimeMillis();
         int[] result = getLeastNumbersPersonal2(arr, 4);
-        System.out.println("getLeastNumbersPersonal result:"+JSON.toJSONString(result)+",耗时:"+(System.currentTimeMillis()-time)+" ms");
+        System.out.println("getLeastNumbersPersonal result:" + JSON.toJSONString(result) + ",耗时:" + (System.currentTimeMillis() - time) + " ms");
         time = System.currentTimeMillis();
 
-        int[] arr1 = new int[]{3, 2, 1,5,};
+        int[] arr1 = new int[]{3, 2, 1, 5,};
         int[] result1 = getLeastNumbers1(arr1, 2);
-        System.out.println("getLeastNumbers1 result:"+JSON.toJSONString(result1)+",耗时:"+(System.currentTimeMillis()-time)+" ms");
+        System.out.println("getLeastNumbers1 result:" + JSON.toJSONString(result1) + ",耗时:" + (System.currentTimeMillis() - time) + " ms");
         time = System.currentTimeMillis();
 
-        int[] arr2 = new int[]{3,1, 2, 1,5,};
+        int[] arr2 = new int[]{3, 1, 2, 1, 5,};
         int[] result2 = getLeastNumbers2(arr2, 2);
-        System.out.println("getLeastNumbers2 result:"+JSON.toJSONString(result2)+",耗时:"+(System.currentTimeMillis()-time)+" ms");
+        System.out.println("getLeastNumbers2 result:" + JSON.toJSONString(result2) + ",耗时:" + (System.currentTimeMillis() - time) + " ms");
         time = System.currentTimeMillis();
 
 //        int[] arr3 = new int[]{3,1, 2, 1,5,};
-        int[] arr3 = new int[]{10002,10003, 10006, 10009,10007,};
+        int[] arr3 = new int[]{10002, 10003, 10006, 10009, 10007,};
         int[] result3 = getLeastNumbers3(arr3, 2);
-        System.out.println("getLeastNumbers3 result:"+JSON.toJSONString(result3)+",耗时:"+(System.currentTimeMillis()-time)+" ms");
+        System.out.println("getLeastNumbers3 result:" + JSON.toJSONString(result3) + ",耗时:" + (System.currentTimeMillis() - time) + " ms");
         time = System.currentTimeMillis();
 
-        int[] arr4 = new int[]{3,1, 2, 1,5,};
+        int[] arr4 = new int[]{3, 1, 2, 1, 5,};
         int[] result4 = getLeastNumbers4(arr4, 3);
-        System.out.println("getLeastNumbers4 result:"+JSON.toJSONString(result4)+",耗时:"+(System.currentTimeMillis()-time)+" ms");
+        System.out.println("getLeastNumbers4 result:" + JSON.toJSONString(result4) + ",耗时:" + (System.currentTimeMillis() - time) + " ms");
 
     }
 
@@ -113,11 +113,12 @@ public class GetLeastNumbers {
      * 本题是求前K小，因此用一个容量为K的大根堆，每次poll出最大的数，那堆中保留的就是前K小啦
      * （注意不是小根堆！小根堆的话需要把全部的元素都入堆，那是O(NlogN)😂，就不是O(NlogK)啦～～）
      * 这个方法比快排慢，但是因为Java中提供了现成的PriorityQueue（默认小根堆）, 所以实现起来最简单，没几行代码～
-     *
+     * <p>
      * 保持堆的大小为K，然后遍历数组中的数字，遍历的时候做如下判断：
      * 1. 若目前堆的大小小于K，将当前数字放入堆中。
      * 2. 否则判断当前数字与大根堆堆顶元素的大小关系，如果当前数字比大根堆堆顶还大，这个数就直接跳过；
      * 反之如果当前数字比大根堆堆顶小，先poll掉堆顶，再将该数字放入堆中。
+     *
      * @param arr
      * @param k
      * @return
@@ -141,7 +142,7 @@ public class GetLeastNumbers {
         // 返回堆中的元素
         int[] res = new int[pq.size()];
         int idx = 0;
-        for(int num: pq) {
+        for (int num : pq) {
             res[idx++] = num;
         }
         return res;
@@ -151,14 +152,13 @@ public class GetLeastNumbers {
      * 二叉搜索树也可以O(NlogK)解决TopK问题哦
      * BST相对于前两种方法没那么常见，但是也很简单，和大根堆的思路差不多～
      * 要提的是，与前两种方法相比，BST有一个好处是求得的前K大的数字是有序的。
-     *
+     * <p>
      * 因为有重复的数字，所以用的是TreeMap而不是TreeSet（有的语言的标准库自带TreeMultiset，也是可以的）。
-     *
+     * <p>
      * TreeMap的key是数字，value是该数字的个数。
      * 我们遍历数组中的数字，维护一个数字总个数为K的TreeMap：
      * 1.若目前map中数字个数小于K，则将map中当前数字对应的个数+1；
      * 2.否则，判断当前数字与map中最大的数字的大小关系：若当前数字大于等于map中的最大数字，就直接跳过该数字；若当前数字小于map中的最大数字，则将map中当前数字对应的个数+1，并将map中最大数字对应的个数减1.
-     *
      *
      * @param arr
      * @param k
@@ -172,7 +172,7 @@ public class GetLeastNumbers {
         // cnt表示当前map总共存了多少个数字。
         TreeMap<Integer, Integer> map = new TreeMap<>();
         int cnt = 0;
-        for (int num: arr) {
+        for (int num : arr) {
             // 1. 遍历数组，若当前map中的数字个数小于k，则map中当前数字对应个数+1
             if (cnt < k) {
                 map.put(num, map.getOrDefault(num, 0) + 1);
@@ -197,7 +197,7 @@ public class GetLeastNumbers {
         // 最后返回map中的元素
         int[] res = new int[k];
         int idx = 0;
-        for (Map.Entry<Integer, Integer> entry: map.entrySet()) {
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
             int freq = entry.getValue();
             while (freq-- > 0) {
                 res[idx++] = entry.getKey();
@@ -209,6 +209,7 @@ public class GetLeastNumbers {
 
     /**
      * 数据范围有限时直接计数排序就行了：O(N)
+     *
      * @param arr
      * @param k
      * @return
@@ -219,7 +220,7 @@ public class GetLeastNumbers {
         }
         // 统计每个数字出现的次数
         int[] counter = new int[10001];
-        for (int num: arr) {
+        for (int num : arr) {
             counter[num]++;
         }
         // 根据counter数组从头找出k个数作为返回结果
@@ -263,7 +264,7 @@ public class GetLeastNumbers {
         // 排序
         Arrays.sort(arr);
         // 返回前k个数
-        return Arrays.copyOfRange(arr, arr.length-k, arr.length);
+        return Arrays.copyOfRange(arr, arr.length - k, arr.length);
 
     }
 }

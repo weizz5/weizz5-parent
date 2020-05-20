@@ -8,7 +8,7 @@ import java.util.Queue;
  * 给你一个由 '1'（陆地）和 '0'（水）组成的的二维网格，请你计算网格中岛屿的数量。
  * 岛屿总是被水包围，并且每座岛屿只能由水平方向和/或竖直方向上相邻的陆地连接形成。
  * 此外，你可以假设该网格的四条边均被水包围。
- *
+ * <p>
  * 示例 1:
  * 输入:
  * 11110
@@ -16,7 +16,7 @@ import java.util.Queue;
  * 11000
  * 00000
  * 输出: 1
- *
+ * <p>
  * 示例 2:
  * 输入:
  * 11000
@@ -59,35 +59,35 @@ public class NumIslands {
         rows = grid.length;
         cols = grid[0].length;
         // 定义方向向量
-        int[][] directions = new int[][]{{0,1}, {-1,0}, {0,-1}, {1,0}};
+        int[][] directions = new int[][]{{0, 1}, {-1, 0}, {0, -1}, {1, 0}};
 
         int res = 0;
         boolean[][] marked = new boolean[rows][cols];
 
         Queue<Integer> queue = new LinkedList<>();
 
-        for(int i=0; i<rows; i++){
+        for (int i = 0; i < rows; i++) {
 
-            for(int j=0; j<cols; j++){
+            for (int j = 0; j < cols; j++) {
 
-                if(grid[i][j] == '1' && !marked[i][j]){
+                if (grid[i][j] == '1' && !marked[i][j]) {
                     res++;
                     marked[i][j] = true;
                     ((LinkedList<Integer>) queue).addLast(i * cols + j);
 
-                    while (!queue.isEmpty()){
+                    while (!queue.isEmpty()) {
 
                         int value = ((LinkedList<Integer>) queue).pollFirst();
                         int newX = value / cols;
                         int newY = value % cols;
-                        for(int k=0; k<directions.length; k++){
+                        for (int k = 0; k < directions.length; k++) {
                             int directionX = newX + directions[k][0];
                             int directionY = newY + directions[k][1];
 
-                            if(directionX >=0 && directionX <rows
-                                    && directionY >=0 && directionY < cols
+                            if (directionX >= 0 && directionX < rows
+                                    && directionY >= 0 && directionY < cols
                                     && grid[directionX][directionY] == '1'
-                                    &&!marked[directionX][directionY]){
+                                    && !marked[directionX][directionY]) {
 
                                 marked[directionX][directionY] = true;
                                 ((LinkedList<Integer>) queue).addLast(directionX * cols + directionY);
@@ -120,7 +120,7 @@ public class NumIslands {
         int count = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                System.out.println("      i:"+i+",j:"+j);
+                System.out.println("      i:" + i + ",j:" + j);
                 // 如果是岛屿中的一个点，并且没有被访问过
                 // 从坐标为 (i,j) 的点开始进行广度优先遍历
                 if (!marked[i][j] && grid[i][j] == '1') {
@@ -131,7 +131,7 @@ public class NumIslands {
                     queue.addLast(i * cols + j);
                     // 注意：这里要标记上已经访问过
                     marked[i][j] = true;
-                    System.out.println("marked count i:"+i+",j:"+j);
+                    System.out.println("marked count i:" + i + ",j:" + j);
                     while (!queue.isEmpty()) {
                         int cur = queue.removeFirst();
                         int curX = cur / cols;
@@ -140,7 +140,7 @@ public class NumIslands {
                         for (int k = 0; k < 4; k++) {
                             int newX = curX + directions[k][0];
                             int newY = curY + directions[k][1];
-                            System.out.println("      newX:"+newX+",newY:"+newY);
+                            System.out.println("      newX:" + newX + ",newY:" + newY);
                             // 如果不越界、没有被访问过、并且还要是陆地，我就继续放入队列，放入队列的同时，要记得标记已经访问过
                             if (inArea(newX, newY) && grid[newX][newY] == '1' && !marked[newX][newY]) {
                                 queue.addLast(newX * cols + newY);
@@ -148,7 +148,7 @@ public class NumIslands {
                                 // 而不是在出队列的时候再标记
                                 // 【特别注意】如果是出队列的时候再标记，会造成很多重复的结点进入队列，造成重复的操作，这句话如果你没有写对地方，代码会严重超时的
                                 marked[newX][newY] = true;
-                                System.out.println("marked newX:"+newX+",newY:"+newY);
+                                System.out.println("marked newX:" + newX + ",newY:" + newY);
                             }
                         }
                     }

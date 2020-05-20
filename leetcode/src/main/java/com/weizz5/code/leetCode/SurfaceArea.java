@@ -8,23 +8,23 @@ package com.weizz5.code.leetCode;
  * 示例 1：
  * 输入：[[2]]
  * 输出：10
- *
+ * <p>
  * 示例 2：
  * 输入：[[1,2],[3,4]]
  * 输出：34
- *
+ * <p>
  * 示例 3：
  * 输入：[[1,0],[0,2]]
  * 输出：16
- *
+ * <p>
  * 示例 4：
  * 输入：[[1,1,1],[1,0,1],[1,1,1]]
  * 输出：32
- *
+ * <p>
  * 示例 5：
  * 输入：[[2,2,2],[2,1,2],[2,2,2]]
  * 输出：46
- *
+ * <p>
  * 提示：
  * 1 <= N <= 50
  * 0 <= grid[i][j] <= 50
@@ -34,9 +34,9 @@ package com.weizz5.code.leetCode;
  */
 public class SurfaceArea {
     public static void main(String[] args) {
-        int[][] grid = {{1,1,1},{1,0,1},{1,1,1}};
+        int[][] grid = {{1, 1, 1}, {1, 0, 1}, {1, 1, 1}};
         int result = surfaceArea(grid);
-        System.out.println("result:"+result);
+        System.out.println("result:" + result);
     }
 
     public static int surfaceArea(int[][] grid) {
@@ -50,9 +50,9 @@ public class SurfaceArea {
                     // 一个柱体中：2个底面 + 所有的正方体都贡献了4个侧表面积
                     area += (level << 2) + 2;
                     // 减掉 i 与 i-1 相贴的两份表面积
-                    area -= i > 0? Math.min(level, grid[i - 1][j]) << 1: 0;
+                    area -= i > 0 ? Math.min(level, grid[i - 1][j]) << 1 : 0;
                     // 减掉 j 与 j-1 相贴的两份表面积
-                    area -= j > 0? Math.min(level, grid[i][j - 1]) << 1: 0;
+                    area -= j > 0 ? Math.min(level, grid[i][j - 1]) << 1 : 0;
                 }
             }
         }

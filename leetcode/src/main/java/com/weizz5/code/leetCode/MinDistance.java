@@ -3,7 +3,7 @@ package com.weizz5.code.leetCode;
 /**
  * 编辑距离
  * 给你两个单词 word1 和 word2，请你计算出将 word1 转换成 word2 所使用的最少操作数 。
- *
+ * <p>
  * 你可以对一个单词进行如下三种操作：
  * 插入一个字符
  * 删除一个字符
@@ -16,7 +16,7 @@ package com.weizz5.code.leetCode;
  * horse -> rorse (将 'h' 替换为 'r')
  * rorse -> rose (删除 'r')
  * rose -> ros (删除 'e')
- *
+ * <p>
  * 示例 2：
  * 输入：word1 = "intention", word2 = "execution"
  * 输出：5
@@ -39,7 +39,7 @@ public class MinDistance {
     }
 
     public int minDistance(String word1, String word2) {
-        return minDistance1(word1,word2);
+        return minDistance1(word1, word2);
     }
 
     public int minDistanceMySelf(String word1, String word2) {
@@ -56,7 +56,7 @@ public class MinDistance {
             return n + m;
 
         // DP 数组
-        int [][] D = new int[n + 1][m + 1];
+        int[][] D = new int[n + 1][m + 1];
 
         // 边界状态初始化
         for (int i = 0; i < n + 1; i++) {
