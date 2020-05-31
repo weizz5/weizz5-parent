@@ -2,6 +2,7 @@ package com.weizz5.spring.service;
 
 import com.weizz5.spring.util.LogUtil;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.lang.reflect.Method;
 
@@ -12,6 +13,7 @@ import java.lang.reflect.Method;
  * @date 2020/05/30
  */
 @Component
+//@Service
 public class MyCalculator implements Calculator{
 
 

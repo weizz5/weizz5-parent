@@ -5,6 +5,8 @@ import com.weizz5.spring.util.LogUtil;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -33,7 +35,7 @@ public void after() throws Exception {
 * 
 */ 
 @Test
-public void testAdd() throws Exception { 
+public void testAdd1() throws Exception {
 //TODO: Test goes here...
     MyCalculator myCalculator = new MyCalculator();
 //    System.out.println(myCalculator.add(1,2));
@@ -41,9 +43,18 @@ public void testAdd() throws Exception {
     Calculator o = (Calculator) Proxy.newProxyInstance(MyCalculator.class.getClassLoader(), new Class[]{Calculator.class}, new CalcultorProxy(myCalculator));
 
     System.out.println(o.add( 3, 4));
-} 
+}
 
-/** 
+    @Test
+    public void testAdd2() throws Exception {
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext2.xml");
+        Calculator calculator = context.getBean(Calculator.class);
+        System.out.println(calculator.add( 3, 4));
+    }
+
+
+    /**
 * 
 * Method: sub(int i, int j) 
 * 

@@ -23,10 +23,10 @@ public class CalcultorProxy implements InvocationHandler {
 
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-        LogUtil.start(method,args);
+//        LogUtil.start(method,args);
 
         Object res = method.invoke(myCalculator,args);
-        LogUtil.stop(method,res );
+//        LogUtil.stop(method,res );
 
         return res;
     }
