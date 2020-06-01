@@ -7,12 +7,15 @@
     <select id="select" resultType="Emp" databaseId="mysql">
         select * from emp where empno = #{empno}
     </select>
+
     <insert id="save" >
         insert into emp(empno,ename) values(#{empno},#{ename})
     </insert>
+
     <update id="update">
         update emp set sal=#{sal} where empno = #{empno}
     </update>
+
     <delete id="delete">
         delete from emp where empno = #{empno}
     </delete>
