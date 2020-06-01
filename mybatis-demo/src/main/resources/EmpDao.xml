@@ -3,12 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.weizz5.mybatis.dao.EmpDao" >
-    <select id="select" resultType="Emp" databaseId="mysql">
+<mapper namespace="com.weizz5.mybatis.dao.EmpDao">
+
+    <select id="query" resultType="Emp" databaseId="mysql">
         select * from emp where empno = #{empno}
     </select>
 
-    <insert id="save" >
+    <insert id="save">
         insert into emp(empno,ename) values(#{empno},#{ename})
     </insert>
 
