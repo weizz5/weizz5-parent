@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--在填写标签的时候一定要注意相关配置的顺序-->
+<configuration>
+    <properties resource="db.properties"></properties>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.jdbc.drivername}"/>
+                <property name="url" value="${db.jdbc.url}"/>
+                <property name="username" value="${db.jdbc.username}"/>
+                <property name="password" value="${db.jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <!--        <mapper resource="EmpDao.xml" />-->
+        <!--        <mapper resource="UserDao.xml"/>-->
+        <!--        <mapper class="com.mashibing.dao.UserDaoAnnotation"></mapper>-->
+        <!--        <mapper class="com.mashibing.dao.UserDao"></mapper>-->
+        <!--如果需要引入多个配置文件，可以直接定义包的名称
+        resource目录下配置的映射文件必须要具体相同的目录
+        -->
+        <package name="com.weizz5.mybatis.dao"/>
+    </mappers>
+</configuration>
