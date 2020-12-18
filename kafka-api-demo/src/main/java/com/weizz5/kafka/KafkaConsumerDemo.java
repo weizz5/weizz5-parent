@@ -31,7 +31,7 @@ public class KafkaConsumerDemo {
         properties.setProperty(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         properties.setProperty(ConsumerConfig.GROUP_ID_CONFIG, "weizz501");
-        ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG
+//        ConsumerConfig.ENABLE_AUTO_COMMIT_CONFIG
 
         KafkaConsumer<String, String> kafkaConsumer = new KafkaConsumer<>(properties);
 
