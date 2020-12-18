@@ -5,8 +5,16 @@
 
 <mapper namespace="com.weizz5.mybatis.dao.EmpDao">
 
-    <select id="query" resultType="Emp" databaseId="mysql">
+    <select id="query" resultType="Emp" >
         select * from emp where empno = #{empno}
+    </select>
+
+    <select id="queryAll" resultType="Emp" >
+        select * from emp
+    </select>
+
+    <select id="queryByRange" resultType="map" >
+        select * from emp
     </select>
 
     <insert id="save">
@@ -20,4 +28,7 @@
     <delete id="delete">
         delete from emp where empno = #{empno}
     </delete>
+    <!--<resultMap id="" type="">-->
+
+    <!--</resultMap>-->
 </mapper>

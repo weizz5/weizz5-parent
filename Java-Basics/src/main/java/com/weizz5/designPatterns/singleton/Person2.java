@@ -26,10 +26,10 @@ public class Person2 {
         this.name = name;
     }
 
-    public static Person2 getInstance( ) {
-        if(null == person){
-            synchronized (Person2.class){
-                if(null == person){
+    public static Person2 getInstance() {
+        if (null == person) {
+            synchronized (Person2.class) {
+                if (null == person) {
                     person = new Person2("lisi");
                 }
             }

@@ -26,7 +26,7 @@ public class Person1 {
         this.name = name;
     }
 
-    public static Person1 getInstance( ) {
+    public static Person1 getInstance() {
         return person;
     }
 

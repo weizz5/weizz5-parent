@@ -1,4 +1,4 @@
-package com.weizz5.code.leetCode;
+package com.weizz5.leetCode21;
 
 //import org.apache.dubbo.common.utils.Stack;
 
@@ -19,7 +19,37 @@ import java.util.Stack;
  */
 public class MergeTwoLists {
 
-    public class ListNode {
+
+    public static void main(String[] args) {
+
+    }
+
+    private static void dfs(ListNode node, ListNode l1,ListNode l2){
+        if(null != l1 && null != l2){
+            if(l1.val<l2.val){
+                node = new ListNode(l1.val);
+                dfs(node.next,l1.next,l2);
+            }else{
+                node = new ListNode(l2.val);
+                dfs(node.next,l1,l2.next);
+            }
+        }
+        if(l1 == null){
+            node = new ListNode(l1.val);
+            dfs(node.next,l1.next,l2);
+        }
+
+        if(l2 == null){
+            node = new ListNode(l2.val);
+            dfs(node.next,l1,l2.next);
+        }
+
+        return;
+
+    }
+
+
+     static class ListNode {
         int val;
 
         ListNode next;

@@ -6,7 +6,7 @@ package com.weizz5.designPatterns.strategy;
  * @author weizz5
  * @date 2020/05/14
  */
-public class NumberChecker implements Checker{
+public class NumberChecker implements Checker {
 
 
     @Override

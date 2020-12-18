@@ -25,7 +25,7 @@ public class Person3 {
     }
 
 
-    static enum PersonEnum{
+    static enum PersonEnum {
 
         INSTANCE;
 
@@ -35,7 +35,7 @@ public class Person3 {
             person = new Person3("lisi");
         }
 
-        public Person3 getInstance(){
+        public Person3 getInstance() {
             return person;
         }
 
@@ -48,9 +48,10 @@ public class Person3 {
                 '}';
     }
 
-    public Person3 getPerson(){
+    public Person3 getPerson() {
         return PersonEnum.INSTANCE.getInstance();
     }
+
     public static void main(String[] args) {
         for (int i = 0; i < 100; i++) {
             System.out.println(User.getInstance());

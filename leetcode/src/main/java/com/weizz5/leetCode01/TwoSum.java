@@ -22,10 +22,43 @@ public class TwoSum {
 
         int target = 9;
 
-        int[] result = twoSum(nums, target);
+        int[] result = twoSumNew(nums, target);
         System.out.println(JSON.toJSONString(result));
 
     }
+
+
+    private static int[] twoSumNew(int[] nums, int target){
+        if(nums.length<2){
+            return new int[0];
+        }
+        Map<Integer, Integer> indexMap = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+            if(!indexMap.containsKey(nums[i])){
+                indexMap.put(target-nums[i], i);
+            }else{
+                return new int[]{i,indexMap.get(nums[i])};
+            }
+        }
+        return new int[0];
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public static int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> indexMap = new HashMap<>();

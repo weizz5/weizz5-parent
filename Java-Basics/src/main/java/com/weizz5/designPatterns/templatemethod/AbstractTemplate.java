@@ -9,7 +9,7 @@ package com.weizz5.designPatterns.templatemethod;
 public abstract class AbstractTemplate {
 
 
-    public void operation(){
+    public void operation() {
 
         hookMethod1();
 
@@ -22,7 +22,6 @@ public abstract class AbstractTemplate {
 
 
     abstract void hookMethod2();
-
 
 
 }

@@ -6,7 +6,7 @@ package com.weizz5.designPatterns.templatemethod;
  * @author weizz5
  * @date 2020/05/14
  */
-public class TemplateImpl2 extends AbstractTemplate{
+public class TemplateImpl2 extends AbstractTemplate {
     @Override
     void hookMethod1() {
         System.out.println("TemplateImpl2 hookMethod1.....");

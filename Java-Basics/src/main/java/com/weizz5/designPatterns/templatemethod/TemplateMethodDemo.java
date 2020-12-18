@@ -9,12 +9,12 @@ package com.weizz5.designPatterns.templatemethod;
 public class TemplateMethodDemo {
 
     public static void main(String[] args) {
-        AbstractTemplate template1  = new TemplateImpl1();
+        AbstractTemplate template1 = new TemplateImpl1();
 
         template1.operation();
 
 
-        AbstractTemplate template2  = new TemplateImpl2();
+        AbstractTemplate template2 = new TemplateImpl2();
 
         template2.operation();
     }

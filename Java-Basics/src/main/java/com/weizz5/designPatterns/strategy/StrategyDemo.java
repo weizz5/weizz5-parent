@@ -26,14 +26,13 @@ public class StrategyDemo {
         StringChecker stringChecker = new StringChecker();
         String str = "123";
 
-        System.out.println(checkValue(numberChecker,str));
-        System.out.println(checkValue(stringChecker,str));
-
+        System.out.println(checkValue(numberChecker, str));
+        System.out.println(checkValue(stringChecker, str));
 
 
     }
 
-    public static boolean checkValue(Checker checker, String value){
+    public static boolean checkValue(Checker checker, String value) {
         return checker.check(value);
     }
 }
